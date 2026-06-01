@@ -1,2 +1,1 @@
 一个基于TypeScript编写的贪吃蛇游戏，背景使用了Sass预编辑器
-使用npm run build命令创建开发者环境
