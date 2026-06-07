@@ -6,7 +6,12 @@ class Control {
   food: Food;
   scoreBoard: ScoreBoard;
   snake: Snake;
+
+  // 存储现在的方向
   direction: string = "";
+
+  // 判断蛇是否还活着
+  isLive: boolean = true;
 
   constructor() {
     this.food = new Food();
@@ -20,6 +25,7 @@ class Control {
   init() {
     document.addEventListener("keydown", this.keydownHandler.bind(this));
     this.run();
+    this.food.change();
   }
 
   // ArrowUp
@@ -27,8 +33,10 @@ class Control {
   // ArrowDown
   // ArrowLeft
   keydownHandler(event: KeyboardEvent) {
-    this.direction = event.key;
-    // console.log(this.direction);
+    if (event.key === "ArrowUp" || "ArrowRight" || "ArrowDown" || "ArrowLeft") {
+      this.direction = event.key;
+    }
+    console.log(this.direction);
   }
 
   run() {
@@ -50,10 +58,28 @@ class Control {
         break;
     }
 
-    this.snake.X = X;
-    this.snake.Y = Y;
+    this.checkEat(X, Y);
 
-    setTimeout(this.run, 300 - (this.scoreBoard.level - 1) * 20);
+    try {
+      this.snake.X = X;
+      this.snake.Y = Y;
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        alert(e.message + ",OVER");
+        this.isLive = false;
+      }
+    }
+
+    this.isLive &&
+      setTimeout(this.run.bind(this), 200 - (this.scoreBoard.level - 1) * 20);
+  }
+
+  checkEat(X: number, Y: number) {
+    if (this.food.X === X && this.food.Y === Y) {
+      this.food.change();
+      this.snake.addBody();
+      this.scoreBoard.addScore();
+    }
   }
 }
 
