@@ -15,4 +15,4 @@ import Control from "./modules/Control";
 // }
 
 // Control类测试代码
-const conrtol = new Control();
+const control = new Control();

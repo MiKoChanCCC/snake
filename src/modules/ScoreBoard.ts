@@ -9,7 +9,7 @@ class ScoreBoard {
   scoreEle: HTMLElement;
   levelEle: HTMLElement;
 
-  constructor(maxLevel: number = 10, upScore: number = 2) {
+  constructor(maxLevel: number = 10, upScore: number) {
     this.scoreEle = document.getElementById("score")!;
     this.levelEle = document.getElementById("level")!;
     this.maxLevel = maxLevel;

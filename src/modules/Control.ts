@@ -13,9 +13,9 @@ class Control {
   // 判断蛇是否还活着
   isLive: boolean = true;
 
-  constructor(maxLevel: number = 10, upScore: number = 2) {
+  constructor(upScore: number = 2) {
     this.food = new Food();
-    this.scoreBoard = new ScoreBoard(maxLevel, upScore);
+    this.scoreBoard = new ScoreBoard(undefined, upScore);
     this.snake = new Snake();
 
     this.init();
