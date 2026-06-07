@@ -1,5 +1,5 @@
 import "./style/index.less";
-// import Control from "./modules/Control";
+import Control from "./modules/Control";
 // import Food from "./modules/Food";
 // import ScoreBoard from "./modules/ScoreBoard";
 // import Snake from "./modules/Snake";
@@ -15,4 +15,5 @@ import "./style/index.less";
 // }
 
 // Control类测试代码
-// const conrtol = new Control();
+const conrtol = new Control();
+conrtol.init();
