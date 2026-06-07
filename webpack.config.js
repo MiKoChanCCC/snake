@@ -9,6 +9,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
     // 指定入口文件
     entry: "./src/index.ts",
+    mode: 'development',
 
     // 指定打包文件所在目录
     output: {

@@ -6,6 +6,7 @@ class Control {
   food: Food;
   scoreBoard: ScoreBoard;
   snake: Snake;
+  direction: string = "";
 
   constructor() {
     this.food = new Food();
@@ -17,10 +18,17 @@ class Control {
 
   // 游戏的初始化方法
   init() {
-    document.addEventListener("keydown", this.keyboardHeadle);
+    document.addEventListener("keydown", this.keydownHandler.bind(this));
   }
 
-  keyboardHeadle() {}
+  // ArrowUp
+  // ArrowRight
+  // ArrowDown
+  // ArrowLeft
+  keydownHandler(event: KeyboardEvent) {
+    this.direction = event.key;
+    // console.log(this.direction);
+  }
 }
 
 export default Control;
