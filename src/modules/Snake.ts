@@ -41,6 +41,7 @@ class Snake {
 
     this.moveBody();
     this.head.style.left = value + "px";
+    this.checkHandBody();
   }
 
   set Y(value: number) {
@@ -61,6 +62,7 @@ class Snake {
 
     this.moveBody();
     this.head.style.top = value + "px";
+    this.checkHandBody();
   }
 
   // 增加身体长度的方法
@@ -77,6 +79,16 @@ class Snake {
 
       (this.bodies[i] as HTMLElement).style.left = X + "px";
       (this.bodies[i] as HTMLElement).style.top = Y + "px";
+    }
+  }
+
+  // 检查是否吃到自己
+  checkHandBody() {
+    for (let i = 1; i < this.bodies.length; i++) {
+      const el = this.bodies[i] as HTMLElement;
+      if (el.offsetLeft === this.X && el.offsetTop === this.Y) {
+        throw new Error("撞到自己了");
+      }
     }
   }
 }

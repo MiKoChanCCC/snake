@@ -13,9 +13,9 @@ class Control {
   // 判断蛇是否还活着
   isLive: boolean = true;
 
-  constructor() {
+  constructor(maxLevel: number = 10, upScore: number = 2) {
     this.food = new Food();
-    this.scoreBoard = new ScoreBoard();
+    this.scoreBoard = new ScoreBoard(maxLevel, upScore);
     this.snake = new Snake();
 
     this.init();
@@ -33,10 +33,14 @@ class Control {
   // ArrowDown
   // ArrowLeft
   keydownHandler(event: KeyboardEvent) {
-    if (event.key === "ArrowUp" || "ArrowRight" || "ArrowDown" || "ArrowLeft") {
+    if (
+      event.key === "ArrowUp" ||
+      event.key === "ArrowRight" ||
+      event.key === "ArrowDown" ||
+      event.key === "ArrowLeft"
+    ) {
       this.direction = event.key;
     }
-    console.log(this.direction);
   }
 
   run() {

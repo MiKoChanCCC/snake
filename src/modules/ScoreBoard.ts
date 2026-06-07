@@ -4,14 +4,16 @@ class ScoreBoard {
 
   // 限制最大的等级
   maxLevel: number;
-
+  // 设置每多少分升一级
+  upScore: number;
   scoreEle: HTMLElement;
   levelEle: HTMLElement;
 
-  constructor(maxLevel: number = 10) {
+  constructor(maxLevel: number = 10, upScore: number = 2) {
     this.scoreEle = document.getElementById("score")!;
     this.levelEle = document.getElementById("level")!;
     this.maxLevel = maxLevel;
+    this.upScore = upScore;
   }
   // if (this.level < this.maxLevel) {
   // }
@@ -22,7 +24,7 @@ class ScoreBoard {
     // innnerText  获取时：返回可见文本    设置时：当作普通文本处理
     // textContent   与innerText类似  但性能通常更好、不受 CSS 样式影响、能获取隐藏元素中的文本
     this.scoreEle.textContent = ++this.score + "";
-    if (this.score % 10 === 0) {
+    if (this.score % this.upScore === 0) {
       this.addLevel();
     }
   }
